@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #0d1335;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 30px;
+  background: linear-gradient(90deg, #0e1f52, #1946fa);
+  color: white;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 800;
+  transition: 0.3s;
+  font-size: 20px;
+}
+
+.nav-links a:hover {
+  color: #00e5ff;
+}
+
+.vid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.bl-img {
+  width: 50vh;
+  height: 50vh;
+}
+
+.bl-logo-1 {
+  transform-origin: center;
+  animation: growShrinkShadow 2.5s ease-in-out infinite;
+}
+
+@keyframes growShrinkShadow {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 6px #00e5ff);
+  }
+  50% {
+    transform: scale(1.12);
+    filter: drop-shadow(0 0 22px #00e5ff);
+  }
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 6px #00e5ff);
+  }
+}
+
