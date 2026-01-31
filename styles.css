@@ -29,12 +29,11 @@ body {
   color: white;
   font-weight: 800;
   transition: 0.3s;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 .nav-links a:hover {
-  color: #00e5ff;
-  text-shadow: 0 0 6px #00e5ff;
+  color: #e60f57;
 }
 
 .bl-logo-1 {
@@ -44,15 +43,13 @@ body {
 
 @keyframes growShrinkShadow {
   0% {
-    filter: drop-shadow(0 0 30px #0e1f52);
-  }
-
-  50% {
-    filter: drop-shadow(0 0 0 #00e5ff);
+    fill: #00e5ff;
+    filter: drop-shadow(0 0 30px #00e5ff);
   }
 
   100% {
-    filter: drop-shadow(0 0 30px #0e1f52);
+    fill: #00e5ff;
+    filter: drop-shadow(0 0 30px #00e5ff);
   }
 }
 
@@ -88,7 +85,7 @@ body {
 .card {
   overflow: hidden;
   transition: transform 0.3s;
-  width: 300px;
+  width: 270px;
   height: 500px;
   border-radius: 17px;
   border: 1px solid #ccc;
@@ -101,5 +98,94 @@ body {
 .card img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;
+}
+
+#banner {
+  width: 100%;
+  height: 50vh;
+  background:
+    url(assets/images/banner/banner-1.png) center / contain no-repeat,
+    linear-gradient(to right, #e60f57 50%, #01409a 50%);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  display: inline-block;
+  width: fit-content;
+  height: fit-content;
+  padding: 0;
+  margin: 0;
+  line-height: 0;
+  cursor: pointer;
+}
+
+.btn img{
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: auto;
+  gap: 100px;
+  animation: appear 3s ease-in-out;
+  z-index: 2;
+}
+
+.banner-img {
+  position: absolute;
+  width: auto;
+  height: 50vh;
+  opacity: 0.75;
+  z-index: 1;
+}
+
+.img-left {
+  left: -30px;
+  top: 0;
+  animation: appearFromLeft 1s ease-in-out;
+}
+
+.img-right {
+  right: 0;
+  top: 0;
+  animation: appearFromRight 1s ease-in-out;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+
+}
+
+@keyframes appearFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  100% {
+    opacity: 0.75;
+    transform: translateX(0);
+  }
+
+}
+
+@keyframes appearFromRight {
+  0% {
+    opacity: 0.25;
+    transform: translateX(100%);
+  }
+
+  100% {
+    opacity: 0.75;
+    transform: translateX(0);
+  }
 }
