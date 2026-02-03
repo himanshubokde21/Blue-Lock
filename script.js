@@ -1,131 +1,131 @@
 const characters = [
     {
-        name: "Yoichi Isagi",
+        name: "Yoichi_Isagi",
         image: "assets/images/characters/isagi.png",
         team: "Blue Lock"
     },
     {
-        name: "Rin Itoshi",
+        name: "Rin_Itoshi",
         image: "assets/images/characters/rin.png",
         team: "Blue Lock"
     },
     {
-        name: "Sae Itoshi",
+        name: "Sae_Itoshi",
         image: "assets/images/characters/sae.png",
         team: "Japan U-20"
     },
     {
-        name: "Meguru Bachira",
+        name: "Meguru_Bachira",
         image: "assets/images/characters/meguru.png",
         team: "Blue Lock"
     },
     {
-        name: "Oliver Aiku",
+        name: "Oliver_Aiku",
         image: "assets/images/characters/aiku.png",
         team: "Japan U-20"
     },
     {
-        name: "Kento Cho",
+        name: "Kento_Cho",
         image: "assets/images/characters/cho.png",
         team: "Japan U-20"
     },
     {
-        name: "Miroku Darai",
+        name: "Miroku_Darai",
         image: "assets/images/characters/darai.png",
         team: "Japan U-20"
     },
     {
-        name: "Hyoma Chigiri",
+        name: "Hyoma_Chigiri",
         image: "assets/images/characters/chigiri.png",
         team: "Blue Lock"
     },
     {
-        name: "Seishiro Nagi",
+        name: "Seishiro_Nagi",
         image: "assets/images/characters/nagi.png",
         team: "Blue Lock"
     },
     {
-        name: "Gen Fukaku",
+        name: "Gen_Fukaku",
         image: "assets/images/characters/gen.png",
         team: "Japan U-20"
     },
     {
-        name: "Barou Shoei",
+        name: "Barou_Shoei",
         image: "assets/images/characters/baro.png",
         team: "Blue Lock"
     },
     {
-        name: "Hayate Haru",
+        name: "Hayate_Haru",
         image: "assets/images/characters/haru.png",
         team: "Japan U-20"
     },
     {
-        name: "Wakatsuki Itsuki",
+        name: "Wakatsuki_Itsuki",
         image: "assets/images/characters/itsuki.png",
         team: "Japan U-20"
     },
     {
-        name: "Neru Teppei",
+        name: "Neru_Teppei",
         image: "assets/images/characters/neru.png",
         team: "Japan U-20"
     },
     {
-        name: "Gin Gagamaru",
+        name: "Gin_Gagamaru",
         image: "assets/images/characters/gin.png",
         team: "Blue Lock"
     },
     {
-        name: "Reo Mikage",
+        name: "Reo_Mikage",
         image: "assets/images/characters/reo.png",
         team: "Blue Lock"
     },
     {
-        name: "Kazuma Nio",
+        name: "Kazuma_Nio",
         image: "assets/images/characters/nio.png",
         team: "Japan U-20"
     },
     {
-        name: "Tadaomi Karasu",
+        name: "Tabito_Karasu",
         image: "assets/images/characters/karasu.png",
         team: "Blue Lock"
     },
     {
-        name: "Ryusei Shidou",
+        name: "Ryusei_Shidou",
         image: "assets/images/characters/shidou.png",
         team: "Japan U-20"
     },
     {
-        name: "Ikki Niko",
+        name: "Ikki_Niko",
         image: "assets/images/characters/niko.png",
         team: "Blue Lock"
     },
     {
-        name: "Kenyu Yukimiya",
+        name: "Kenyu_Yukimiya",
         image: "assets/images/characters/kenyu.png",
         team: "Blue Lock"
     },
     {
-        name: "Yo Hiori",
+        name: "Yo_Hiori",
         image: "assets/images/characters/hiori.png",
         team: "Blue Lock"
     },
     {
-        name: "Shuto Sendo",
+        name: "Shuto_Sendo",
         image: "assets/images/characters/shuto.png",
         team: "Japan U-20"
     },
     {
-        name: "Eita Otoya",
+        name: "Eita_Otoya",
         image: "assets/images/characters/eita.png",
         team: "Blue Lock"
     },
     {
-        name: "Kitsunezato Teru",
+        name: "Kitsunezato_Teru",
         image: "assets/images/characters/teru.png",
         team: "Japan U-20"
     },
     {
-        name: "Jyubei Aryu",
+        name: "Jyubei_Aryu",
         image: "assets/images/characters/aryu.png",
         team: "Blue Lock"
     },
@@ -137,6 +137,7 @@ const cardContainer = document.getElementById('cardContainer');
 characters.forEach(character => {
     const card = document.createElement('div');
     card.className = 'card';
+    card.dataset.name = character.name;
 
     card.innerHTML = `
         <img src="${character.image}" alt="${character.name}">
@@ -186,6 +187,7 @@ function BLChar() {
         if (character.team === "Blue Lock") {
             const card = document.createElement('div');
             card.className = 'card';
+            card.dataset.name = character.name;
 
             card.innerHTML = `
                 <img src="${character.image}" alt="${character.name}">
@@ -237,6 +239,7 @@ function JapanU20Char() {
         if (character.team === "Japan U-20"){
             const card = document.createElement('div');
             card.className = 'card';
+            card.dataset.name = character.name;
     
             card.innerHTML = `
             <img src="${character.image}" alt="${character.name}">
@@ -246,3 +249,30 @@ function JapanU20Char() {
         }
     });
 }
+
+
+cardContainer.addEventListener('mouseover', (e) => {
+    const card = e.target.closest('.card');
+    if (!card) return;
+
+    if (card.contains(e.relatedTarget)) return;
+
+    const img = card.querySelector('img');
+    const name = card.dataset.name;
+
+    if (!card.dataset.original) {
+        card.dataset.original = img.src;
+    }
+
+    img.src = `assets/images/cards/${name}-card.png`;
+});
+
+cardContainer.addEventListener('mouseout', (e) => {
+    const card = e.target.closest('.card');
+    if (!card) return;
+
+    if (card.contains(e.relatedTarget)) return;
+
+    const img = card.querySelector('img');
+    img.src = card.dataset.original;
+});

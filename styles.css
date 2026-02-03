@@ -83,22 +83,59 @@ body {
 }
 
 .card {
+  position: relative;
   overflow: hidden;
-  transition: transform 0.3s;
+  transition: transform 0.4s ease;
+  transform-origin: center;
   width: 270px;
   height: 500px;
   border-radius: 17px;
   border: 1px solid #ccc;
+  animation: flip 1s ease-in-out;
 }
 
-.card:hover {
-  transform: scale(1.05);
+.card:hover{
+  transform: rotateZ(-90deg);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  height: 200%;
+  opacity: 0;
+  pointer-events: none;   
+  transform: rotateZ(-60deg);
+  left: -300px;
+  width: 6vh;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+}
+
+.card:hover::before{
+  opacity: 1;
+  animation: shine 2s infinite forwards;
+}
+
+@keyframes shine {
+  from {
+    left: 500px;
+  }
+  to {
+    left: -700px;
+  }
 }
 
 .card img {
   width: 100%;
   height: 100%;
   object-fit: fill;
+  transition: transform 0.4s ease;
+  display: block;
 }
 
 #banner {
@@ -187,5 +224,14 @@ body {
   100% {
     opacity: 0.75;
     transform: translateX(0);
+  }
+}
+
+@keyframes flip {
+  0%{
+    transform: rotateX(180deg);
+  }
+  100%{
+    transform: rotateX(360deg);
   }
 }
